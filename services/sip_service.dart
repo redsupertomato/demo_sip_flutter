@@ -11,8 +11,8 @@ class SIPService implements SIPUAListener {
   void configureSIP(String wsUrl, String uri, String username, String password) {
     UaSettings settings = UaSettings();
 
-    settings.webSocketUrl = wsUrl; // WebSocket URL for your SIP server
-    settings.uri = uri; // SIP URI
+    settings.webSocketUrl = wsUrl; // WebSocket URL
+    settings.uri = uri;           // SIP URI (e.g., sip:username@domain)
     settings.authorizationUser = username;
     settings.password = password;
     settings.displayName = username;
@@ -31,17 +31,17 @@ class SIPService implements SIPUAListener {
 
   @override
   void callStateChanged(Call call, CallState state) {
-    print('Call state: ${state.state}');
+    // Handle call state changes, such as "ringing", "answered", "ended"
   }
 
   @override
   void registrationStateChanged(RegistrationState state) {
-    print('Registration state: ${state.state}');
+    // Handle SIP registration state
   }
 
   @override
   void transportStateChanged(TransportState state) {
-    print('Transport state: ${state.state}');
+    // Handle WebSocket transport state
   }
 
   SIPUAHelper get helper => _sipHelper;
